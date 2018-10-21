@@ -24,7 +24,7 @@ export default class Game extends BaseEntity {
       .length === 1
 
   @Exclude()
-  public static isValidColor = (color): boolean => !Game.colorArray.includes(color)
+  public static isValidColor = (color): boolean => Game.colorArray.includes(color)
 
   @Exclude()
   private static colorArray: Colors[] = Object.keys(Colors)
