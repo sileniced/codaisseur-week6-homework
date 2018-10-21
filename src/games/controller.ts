@@ -43,11 +43,11 @@ export default class PageController {
     if (update.id) {
       throw new BadRequestError("You can't update game id");
     }
-    if (update.color && !Game.colorArray.includes(update.color)) {
+    if (update.color && !Game.isValidColor(update.color)) {
       throw new BadRequestError("Not a valid color");
     }
-    if (update.board && Game.moves(game.board, update.board) > 1) {
-      throw new BadRequestError("More then 1 move is made");
+    if (update.board && !Game.isValidMove(game.board, update.board)) {
+      throw new BadRequestError("Not a valid move. More then 1 move is made");
     }
     return Game.merge(game, update).save();
   }
