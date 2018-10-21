@@ -41,7 +41,7 @@ export default class PageController {
       throw new NotFoundError("Cannot find game");
     }
     if (update.id) {
-      throw new BadRequestError("You can't update game id");
+      throw new BadRequestError("You can't update the game this way");
     }
     if (update.color && !Game.isValidColor(update.color)) {
       throw new BadRequestError("Not a valid color");
