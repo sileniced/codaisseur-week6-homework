@@ -15,7 +15,7 @@ import Game from "./entity";
 export default class PageController {
 
   @Get("/games")
-  public async allPages(): Promise<{
+  public async allGames(): Promise<{
     games: Game[],
   }> {
     const games = await Game.find();
@@ -24,7 +24,7 @@ export default class PageController {
 
   @Post("/games")
   @HttpCode(201)
-  public createPage(
+  public createGame(
     @Body() body: { name: string },
   ): Promise<Game> {
     const game: Game = new Game(body.name);
@@ -32,7 +32,7 @@ export default class PageController {
   }
 
   @Put("/games/:id")
-  public async updatePage(
+  public async updateGame(
     @Param("id") id: number,
     @Body() update: Partial<Game>,
   ): Promise<Game> {
