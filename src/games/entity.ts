@@ -7,7 +7,11 @@ import { BaseEntity } from "typeorm/repository/BaseEntity";
 type Board = string[][];
 enum Colors { "red", "blue", "green", "yellow", "magenta" }
 
-const defaultBoard: Board = [["o", "o", "o"], ["o", "o", "o"], ["o", "o", "o"]];
+const defaultBoard: Board = [
+  ["o", "o", "o"],
+  ["o", "o", "o"],
+  ["o", "o", "o"],
+];
 
 @Entity()
 export default class Game extends BaseEntity {
