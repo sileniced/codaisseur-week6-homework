@@ -21,7 +21,13 @@ export default class Game extends BaseEntity {
     board1
     .map((row, y) => row.filter((cell, x) => board2[y][x] !== cell))
     .reduce((a, b) => a.concat(b))
-      .length;
+      .length
+
+  @Exclude()
+  private static getRandomColor = (): Colors => {
+    const random: number = Math.floor(Math.random() * Game.colorArray.length);
+    return Game.colorArray[random];
+  }
 
   @PrimaryGeneratedColumn()
   public id?: number;
@@ -46,13 +52,7 @@ export default class Game extends BaseEntity {
   constructor(name: string) {
     super();
     this.name = name;
-    this.color = this.getRandomColor();
+    this.color = Game.getRandomColor();
     this.board = defaultBoard;
   }
-
-  @Exclude()
-  public getRandomColor = (): Colors => {
-    const random: number = Math.floor(Math.random() * Game.colorArray.length);
-    return Game.colorArray[random];
-  };
 }

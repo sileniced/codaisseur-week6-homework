@@ -27,7 +27,7 @@ export default class PageController {
   public createPage(
     @Body() body: { name: string },
   ): Promise<Game> {
-    const game = new Game(body.name);
+    const game: Game = new Game(body.name);
     return game.save();
   }
 
@@ -36,7 +36,7 @@ export default class PageController {
     @Param("id") id: number,
     @Body() update: Partial<Game>,
   ): Promise<Game> {
-    const game = await Game.findOne(id);
+    const game: Game | undefined = await Game.findOne(id);
     if (!game) {
       throw new NotFoundError("Cannot find game");
     }
