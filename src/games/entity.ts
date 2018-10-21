@@ -32,7 +32,10 @@ export default class Game extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id?: number;
 
-  @Column({ nullable: false, type: "text" })
+  @Column({
+    nullable: false,
+    type: "text",
+  })
   public name: string;
 
   // @IsEnum(Colors)
@@ -47,7 +50,7 @@ export default class Game extends BaseEntity {
     nullable: false,
     type: "json",
   })
-  public board: object;
+  public board: string[][];
 
   constructor(name: string) {
     super();
